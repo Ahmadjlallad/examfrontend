@@ -39,26 +39,31 @@ class FavFruit extends React.Component {
     return (
       <Container fluid className="md">
         <Row xs={3}>
-          {this.state.userFruit.map((fruit) => {
-            return (
-              <Col key={fruit._id}>
-                <Card style={{ width: "18rem" }}>
-                  <Card.Img variant="top" src={fruit.image} />
-                  <Card.Body>
-                    <Card.Title>Name: {fruit.name}</Card.Title>
-                    <Card.Text>Price: {fruit.price}</Card.Text>
-                    <Button
-                      onClick={() => this.deleteFruit(fruit._id)}
-                      variant="danger"
-                    >
-                      Delete
-                    </Button>
-                    <UpdateForm updateFruit={this.updateFruit} fruit={fruit} />
-                  </Card.Body>
-                </Card>
-              </Col>
-            );
-          })}
+          {this.state.userFruit.length > 0
+            ? this.state.userFruit?.map((fruit) => {
+                return (
+                  <Col key={fruit._id}>
+                    <Card style={{ width: "18rem" }}>
+                      <Card.Img variant="top" src={fruit.image} />
+                      <Card.Body>
+                        <Card.Title>Name: {fruit.name}</Card.Title>
+                        <Card.Text>Price: {fruit.price}</Card.Text>
+                        <Button
+                          onClick={() => this.deleteFruit(fruit._id)}
+                          variant="danger"
+                        >
+                          Delete
+                        </Button>
+                        <UpdateForm
+                          updateFruit={this.updateFruit}
+                          fruit={fruit}
+                        />
+                      </Card.Body>
+                    </Card>
+                  </Col>
+                );
+              })
+            : null}
         </Row>
       </Container>
     );

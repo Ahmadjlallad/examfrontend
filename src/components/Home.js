@@ -24,15 +24,17 @@ class Home extends React.Component {
     return (
       <Container fluid className="md">
         <Row xs={3}>
-          {this.state.allFruits.map((fruit) => (
-            <Col key={fruit._id}>
-              <FruitCard
-                addFruit={this.addFruit}
-                fruit={fruit}
-                email={this.props.auth0.user.email}
-              />
-            </Col>
-          ))}
+          {this.state.allFruits.length > 0
+            ? this.state.allFruits.map((fruit) => (
+                <Col key={fruit._id}>
+                  <FruitCard
+                    addFruit={this.addFruit}
+                    fruit={fruit}
+                    email={this.props.auth0.user.email}
+                  />
+                </Col>
+              ))
+            : null}
         </Row>
       </Container>
     );
