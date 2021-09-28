@@ -3,7 +3,7 @@ import { Card, Button } from "react-bootstrap";
 export class FruitCard extends Component {
   render() {
     return (
-      <Card style={{ width: "18rem" }} key>
+      <Card style={{ width: "18rem" }} key={this.props.fruit.name}>
         <Card.Img variant="top" src={this.props.fruit.image} />
         <Card.Body>
           <Card.Title>Name: {this.props.fruit.name}</Card.Title>
